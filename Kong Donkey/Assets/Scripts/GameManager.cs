@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject lifeRemainingPrefab;
     private List<GameObject> lifeIcons = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,10 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < lives; i++)
         {
+            Debug.Log("Adding life icon: " + i);
             var lifeIcon = Instantiate(lifeRemainingPrefab, Vector3.zero, Quaternion.identity, transform);
             RectTransform rectTransform = lifeIcon.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2((i * 60 - 900), (rectTransform.anchoredPosition.y+1000));
+            rectTransform.anchoredPosition = new Vector2((-860), (rectTransform.anchoredPosition.y-515));
             lifeIcons.Add(lifeIcon);
         }
     }
