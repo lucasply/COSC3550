@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Adding life icon: " + i);
             var lifeIcon = Instantiate(lifeRemainingPrefab, Vector3.zero, Quaternion.identity, transform);
             RectTransform rectTransform = lifeIcon.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2((-860), (rectTransform.anchoredPosition.y-515));
+            rectTransform.anchoredPosition = new Vector2((i*100+1350), (rectTransform.anchoredPosition.y+1000));
             lifeIcons.Add(lifeIcon);
         }
     }
