@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 09add1dea26ece342aa00667124ff631
+guid: 59ada81391957f14597edd43215f2c2e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Iggy_InDistress_0
+      name: Barrel_sprites_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 1
-        width: 19
-        height: 30
+        x: 7
+        y: 8
+        width: 17
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 113535cf57845c34cbf3c8c6925a3a97
-      internalID: 75499021
+      spriteID: 23f36cbcae56a8b45b9369d909bc1e2e
+      internalID: -965094335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iggy_InDistress_1
+      name: Barrel_sprites_1
       rect:
         serializedVersion: 2
-        x: 38
-        y: 1
-        width: 19
-        height: 30
+        x: 34
+        y: 8
+        width: 28
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b1b4749de5a90548b26d0035b4be8e5
-      internalID: 1465755538
+      spriteID: a47af5be48f17ca4a8276038a263f037
+      internalID: -1755427810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iggy_InDistress_2
+      name: Barrel_sprites_2
       rect:
         serializedVersion: 2
-        x: 70
-        y: 1
-        width: 20
-        height: 30
+        x: 66
+        y: 8
+        width: 28
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 730c19489b3f73d47b72d32d3f1b9ee6
-      internalID: 714740650
+      spriteID: a0f58f9b05397144ab439d219557f396
+      internalID: 1692050313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iggy_InDistress_3
+      name: Barrel_sprites_3
       rect:
         serializedVersion: 2
-        x: 100
-        y: 1
-        width: 24
-        height: 30
+        x: 98
+        y: 8
+        width: 28
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e31bb148332cdfc48891484c1c81ac12
-      internalID: -433893372
+      spriteID: 7a7c46d1cb2b7c74c9e4fdfa9395459f
+      internalID: 1946467682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iggy_InDistress_4
+      name: Barrel_sprites_4
       rect:
         serializedVersion: 2
-        x: 134
-        y: 1
-        width: 20
-        height: 30
+        x: 130
+        y: 8
+        width: 28
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b7de12c0cffcb2479cb7f728f9ae8b8
-      internalID: -666491963
+      spriteID: fd47c1d204e3c184db9533cbb5b6f1f6
+      internalID: -1282424167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Iggy_InDistress_5
+      name: Barrel_sprites_5
       rect:
         serializedVersion: 2
-        x: 164
-        y: 1
-        width: 24
-        height: 30
+        x: 162
+        y: 8
+        width: 28
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +229,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70c0342226d0fbe468f2679a0199cfe9
-      internalID: 1213336215
+      spriteID: 1dad26041c6779149a9a10252c5eab6e
+      internalID: 86679427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel_sprites_6
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 8
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e566696729280469dc943f321340aa
+      internalID: 53761688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Barrel_sprites_7
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 8
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca650ec87eafe04f8f1393fd5587dfa
+      internalID: -1974012360
       vertices: []
       indices: 
       edges: []
@@ -246,12 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Iggy_InDistress_0: 75499021
-      Iggy_InDistress_1: 1465755538
-      Iggy_InDistress_2: 714740650
-      Iggy_InDistress_3: -433893372
-      Iggy_InDistress_4: -666491963
-      Iggy_InDistress_5: 1213336215
+      Barrel_sprites_0: -965094335
+      Barrel_sprites_1: -1755427810
+      Barrel_sprites_2: 1692050313
+      Barrel_sprites_3: 1946467682
+      Barrel_sprites_4: -1282424167
+      Barrel_sprites_5: 86679427
+      Barrel_sprites_6: 53761688
+      Barrel_sprites_7: -1974012360
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
