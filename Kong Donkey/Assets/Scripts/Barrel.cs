@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
+    // Sound effect variables
+    public List<AudioClip> breaking = new List<AudioClip>();
+    private AudioSource source;
+
     [Header("Barrel Settings")]
     public float fallChance = 0.2f;
     public float fallSpeed = 2f;    
@@ -14,6 +18,7 @@ public class Barrel : MonoBehaviour
     private Animator anim;
 
     void Start(){
+        source = GetComponent<AudioSource>();
         
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -61,9 +66,16 @@ public class Barrel : MonoBehaviour
         else if(other.CompareTag("Fire"))
         {
             Debug.Log("Barrel reached the fire");
-            Destroy(this.gameObject);
+            destroyBarrel();
         }
     }
 
+    private destroyBarrel() {
+        AudioClip clip = breaking[Random.Range(0, breaking.Count)];
+        source.PlayOneShot(clip);
+
+        // Actually destroy object
+        Destroy(this.gameObject);
+    }
 
 }
