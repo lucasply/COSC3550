@@ -45,6 +45,7 @@ public class Barrel : MonoBehaviour
             }
         }
         else if(other.CompareTag("LadderBottomTrigger")){
+            Debug.Log("Barrel has reached the bottom!");
             isFalling = false;
             gameObject.layer = LayerMask.NameToLayer("Objects"); // Reset the layer to default when it reaches the bottom
         }
