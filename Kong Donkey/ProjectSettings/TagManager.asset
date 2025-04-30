@@ -8,6 +8,8 @@ TagManager:
   - Barrel
   - Goal
   - Fire
+  - LadderTopTrigger
+  - LadderBottomTrigger
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - 
   - Objects
   - Player
-  - 
+  - Ladder
   - 
   - 
   - 
