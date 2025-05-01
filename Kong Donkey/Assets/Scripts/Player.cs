@@ -102,7 +102,7 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        Debug.Log("Player collided with something");
+        //Debug.Log("Player collided with something");
     }
 
 }

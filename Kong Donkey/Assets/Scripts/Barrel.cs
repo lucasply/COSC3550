@@ -46,7 +46,7 @@ public class Barrel : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("LadderTopTrigger")){
             if(Random.value < fallChance){
-                Debug.Log("Barrel is falling!");
+                //Debug.Log("Barrel is falling!");
                 isFalling = true;
                 gameObject.layer = LayerMask.NameToLayer("Ladder");
                 anim.Play(stateName: "BarrelFall");
@@ -56,7 +56,7 @@ public class Barrel : MonoBehaviour
             }
         }
         else if(other.CompareTag("LadderBottomTrigger")){
-            Debug.Log("Barrel has reached the bottom!");
+            //Debug.Log("Barrel has reached the bottom!");
             isFalling = false;
             gameObject.layer = LayerMask.NameToLayer("Objects"); // Reset the layer to default when it reaches the bottom
             anim.Play(stateName: "BarrelRoll");
@@ -67,7 +67,7 @@ public class Barrel : MonoBehaviour
         }
         else if(other.CompareTag("Fire"))
         {
-            Debug.Log("Barrel reached the fire");
+            //Debug.Log("Barrel reached the fire");
             
             playBarrelSound(0);
             Destroy(this.gameObject);
