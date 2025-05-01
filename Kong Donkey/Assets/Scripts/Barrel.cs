@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
-    // Sound effect variables
-    public List<AudioClip> breaking = new List<AudioClip>();
-    private AudioSource source;
-
     [Header("Barrel Settings")]
     public float fallChance = 0.2f;
     public float fallSpeed = 2f;    
@@ -16,6 +12,10 @@ public class Barrel : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator anim;
+
+    // Sound effect variables
+    public List<AudioClip> barrelSounds = new List<AudioClip>();
+    private AudioSource source;
 
     void Start(){
         source = GetComponent<AudioSource>();
@@ -62,20 +62,34 @@ public class Barrel : MonoBehaviour
             anim.Play(stateName: "BarrelRoll");
             rb.constraints = RigidbodyConstraints2D.None;
 
+            playBarrelSound(1);
+
         }
         else if(other.CompareTag("Fire"))
         {
             Debug.Log("Barrel reached the fire");
-            destroyBarrel();
+            
+            playBarrelSound(0);
+            Destroy(this.gameObject);
         }
     }
 
-    private void destroyBarrel() {
-        AudioClip clip = breaking[Random.Range(0, breaking.Count)];
-        source.PlayOneShot(clip);
+    public void playBarrelSound(int index) {
+        /*
+            0 : smashing
+            1 : hitting ground
+        */
 
-        // Actually destroy object
-        Destroy(this.gameObject);
+        AudioClip clip = barrelSounds[index];
+
+        // For testing before recording
+        if (clip == null)
+        {
+            Debug.LogError("AudioClip not found at index: " + index);
+            return;
+        }
+        
+        source.PlayOneShot(clip);
     }
 
 }

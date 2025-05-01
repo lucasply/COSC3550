@@ -11,9 +11,14 @@ public class Kong : MonoBehaviour
     private Animator anim;
     public GameObject barrelPrefab;
 
+    // Sound effect variables
+    public List<AudioClip> kongSounds = new List<AudioClip>();
+    private AudioSource source;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -24,9 +29,13 @@ public class Kong : MonoBehaviour
         {
             case KongState.BarrelThrow:
                 anim.Play(stateName: "KongThrow");
+                playKongSound(1);
+
                 break;
             case KongState.Idle:
                 anim.Play(stateName: "KongIdle");
+                playKongSound(0);
+
                 break;
             
             
@@ -37,7 +46,24 @@ public class Kong : MonoBehaviour
     void ThrowBarrel()
     {
         kState = KongState.BarrelThrow;
+    }
 
+    public void playKongSound(int index) {
+        /*
+            0 : idel
+            1 : throw
+        */
+
+        AudioClip clip = kongSounds[index];
+
+        // For testing before recording
+        if (clip == null)
+        {
+            Debug.LogError("AudioClip not found at index: " + index);
+            return;
+        }
+
+        source.PlayOneShot(clip);
     }
 
 }
