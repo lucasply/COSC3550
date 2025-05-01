@@ -70,7 +70,7 @@ public class Barrel : MonoBehaviour
         }
     }
 
-    private destroyBarrel() {
+    private void destroyBarrel() {
         AudioClip clip = breaking[Random.Range(0, breaking.Count)];
         source.PlayOneShot(clip);
 
