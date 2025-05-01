@@ -113,10 +113,10 @@ TextureImporter:
       name: Iggy_Saved_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 1
-        width: 24
-        height: 30
+        x: 0
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,7 +124,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 106694485dd2deb4cae94fc129627cd0
+      spriteID: 7e6e6b393abafe647afc17c1c41b3700
       internalID: 886075990
       vertices: []
       indices: 
@@ -134,10 +134,10 @@ TextureImporter:
       name: Iggy_Saved_1
       rect:
         serializedVersion: 2
-        x: 86
-        y: 1
-        width: 24
-        height: 30
+        x: 64
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f75d1f6817e2c894ba85af2f036f5252
+      spriteID: 9967e9cc1fbc9f84cac3fab2d046e0f6
       internalID: -320934451
       vertices: []
       indices: 
@@ -155,10 +155,10 @@ TextureImporter:
       name: Iggy_Saved_2
       rect:
         serializedVersion: 2
-        x: 150
-        y: 1
-        width: 28
-        height: 30
+        x: 128
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +166,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 267a95dde675c6a418070b92ee747f88
+      spriteID: 5041e70cd4db8d44abe07e4c993d9cf0
       internalID: -1269341649
       vertices: []
       indices: 
@@ -176,10 +176,10 @@ TextureImporter:
       name: Iggy_Saved_3
       rect:
         serializedVersion: 2
-        x: 214
-        y: 1
-        width: 28
-        height: 30
+        x: 192
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53d52a928c0b89e41b3f0927684262a9
+      spriteID: 506d6d2610adea646be044ee5671bfad
       internalID: 1778715394
       vertices: []
       indices: 
@@ -197,10 +197,10 @@ TextureImporter:
       name: Iggy_Saved_4
       rect:
         serializedVersion: 2
-        x: 278
-        y: 1
-        width: 19
-        height: 30
+        x: 256
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,7 +208,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 032de74e33a6a4242ab1f0406112903f
+      spriteID: 7ff269d91d5426d45a132797b86ce5a8
       internalID: 1816741911
       vertices: []
       indices: 
@@ -218,10 +218,10 @@ TextureImporter:
       name: Iggy_Saved_5
       rect:
         serializedVersion: 2
-        x: 297
-        y: 23
-        width: 5
-        height: 5
+        x: 320
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,7 +229,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f81407d4a17beaa4b80cfa7288990f8a
+      spriteID: 5aae897bbb43441499b013c0cbef9c81
       internalID: -1096936642
       vertices: []
       indices: 
@@ -239,10 +239,10 @@ TextureImporter:
       name: Iggy_Saved_6
       rect:
         serializedVersion: 2
-        x: 342
-        y: 1
-        width: 19
-        height: 30
+        x: 384
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1357849e654112d4f8af24634b7f3ef4
+      spriteID: 4c9e9809e49663741b76b3eb2502e3cb
       internalID: -16904044
       vertices: []
       indices: 
@@ -260,10 +260,10 @@ TextureImporter:
       name: Iggy_Saved_7
       rect:
         serializedVersion: 2
-        x: 361
-        y: 23
-        width: 5
-        height: 5
+        x: 448
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,7 +271,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1add37bb13b74404e806000041890975
+      spriteID: 92becf790675981429d8724c0e9d2b34
       internalID: 806698478
       vertices: []
       indices: 
@@ -281,10 +281,10 @@ TextureImporter:
       name: Iggy_Saved_8
       rect:
         serializedVersion: 2
-        x: 406
-        y: 1
-        width: 19
-        height: 30
+        x: 512
+        y: 0
+        width: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,113 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c4fa58928f47df468daaed91154cbf1
+      spriteID: c9662886510540643bcb6cb1a8acd0ef
       internalID: -1540807432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Iggy_Saved_9
-      rect:
-        serializedVersion: 2
-        x: 428
-        y: 24
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d9c731f802786b40ab60a0b3b5989e4
-      internalID: 590242760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Iggy_Saved_10
-      rect:
-        serializedVersion: 2
-        x: 470
-        y: 1
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9d4454efecd29f49b56acfcab569431
-      internalID: 519543868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Iggy_Saved_11
-      rect:
-        serializedVersion: 2
-        x: 492
-        y: 24
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de090909677d7e9408e603ba0a32b606
-      internalID: -1210797449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Iggy_Saved_12
-      rect:
-        serializedVersion: 2
-        x: 534
-        y: 1
-        width: 19
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29d9687e3c021bf4594a5f32b3ce4d12
-      internalID: -1253384261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Iggy_Saved_13
-      rect:
-        serializedVersion: 2
-        x: 556
-        y: 24
-        width: 9
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 561a5501da863ad4b8a4284fddb46ee2
-      internalID: -1036198026
       vertices: []
       indices: 
       edges: []
@@ -416,10 +311,6 @@ TextureImporter:
     nameFileIdTable:
       Iggy_Saved_0: 886075990
       Iggy_Saved_1: -320934451
-      Iggy_Saved_10: 519543868
-      Iggy_Saved_11: -1210797449
-      Iggy_Saved_12: -1253384261
-      Iggy_Saved_13: -1036198026
       Iggy_Saved_2: -1269341649
       Iggy_Saved_3: 1778715394
       Iggy_Saved_4: 1816741911
@@ -427,7 +318,6 @@ TextureImporter:
       Iggy_Saved_6: -16904044
       Iggy_Saved_7: 806698478
       Iggy_Saved_8: -1540807432
-      Iggy_Saved_9: 590242760
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

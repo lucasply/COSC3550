@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 385411384391022073}
   - component: {fileID: 7198938264802410748}
   - component: {fileID: 1827165611981876335}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: BrokenLadder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
