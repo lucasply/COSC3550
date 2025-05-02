@@ -68,7 +68,7 @@ public class Barrel : MonoBehaviour
         {
             //Debug.Log("Barrel reached the fire");
             
-            playBarrelSound(0);
+            //playBarrelSound(0);
             Destroy(this.gameObject);
         }
     }

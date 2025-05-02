@@ -13,11 +13,12 @@ public class Kong : MonoBehaviour
     //For barrel throwing
     public GameObject barrelPrefab;
     private GameObject barrel;
-    private GameObject barrelSpawn;
 
-    private Vector2 throwPos;
+    private Vector2 throwPos = new Vector2(-3.3f, 3f);
     private Rigidbody2D barrelRB;
     private SpriteRenderer sRend;
+    public bool canThrow = true;
+    public float minThrowTime = 3.0f;
 
     // Sound effect variables
     public List<AudioClip> kongSounds = new List<AudioClip>();
@@ -30,10 +31,7 @@ public class Kong : MonoBehaviour
         source = GetComponent<AudioSource>();
         sRend=GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        Transform launchPointTrans = transform.Find("barrelSpawn");
-        barrelSpawn = launchPointTrans.gameObject;
-        throwPos = launchPointTrans.position;
-        ThrowBarrel();
+        PrepareThrow();
 
     }
 
@@ -43,16 +41,24 @@ public class Kong : MonoBehaviour
         
         switch (kState)
         {
-            case KongState.BarrelThrow:
-                anim.Play(stateName: "KongThrow");
-                playKongSound(1);
-
-                break;
             case KongState.Idle:
                 anim.Play(stateName: "KongIdle");
-                playKongSound(0);
+                //playKongSound(0);
+                if (canThrow)
+                {
+                    canThrow = false;
+                    float randomDelay = Random.Range(0f, 2.0f);
+                    Invoke("PrepareThrow", minThrowTime+randomDelay);
+                }
 
                 break;
+                
+                case KongState.BarrelThrow:
+                anim.Play(stateName: "KongThrow");
+                //playKongSound(1);
+
+                break;
+            
             
             
 
@@ -61,7 +67,7 @@ public class Kong : MonoBehaviour
     void PrepareThrow()
     {
         kState = KongState.BarrelThrow;
-        Invoke("ThrowBarrel", 2);
+        Invoke("ThrowBarrel", 1f);
     }
     void ThrowBarrel()
     {
@@ -72,8 +78,9 @@ public class Kong : MonoBehaviour
         barrel.transform.position = throwPos;
         barrelRB = barrel.GetComponent<Rigidbody2D>(); 
         barrelRB.velocity =new Vector2(2, 0);
-        
         kState = KongState.Idle;   
+        canThrow = true;
+
     }
 
     public void playKongSound(int index) {

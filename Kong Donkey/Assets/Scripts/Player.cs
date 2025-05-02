@@ -86,20 +86,20 @@ public class Player : MonoBehaviour
         {
             case PlayerState.Run:
                 anim.Play(stateName: "PlayerRun");
-                playPlayerSound(0);
+                //playPlayerSound(0);
 
                 break;
             case PlayerState.Idle:
                 anim.Play(stateName: "PlayerIdle");
                 if (Random.value < idleSoundChance)
                 {
-                    playPlayerSound(1);
+                    //playPlayerSound(1);
                 }
 
                 break;
             case PlayerState.Jump:
                 anim.Play(stateName: "PlayerJump");
-                playPlayerSound(2);
+                //playPlayerSound(2);
 
                 break;
             case PlayerState.Ladder:

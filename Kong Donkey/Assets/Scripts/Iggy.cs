@@ -14,7 +14,7 @@ public class Iggy : MonoBehaviour
     void Awake()
     {
         source = GetComponent<AudioSource>();
-        playIggySound(0);
+        //playIggySound(0);
     }
 
     public void playIggySound(int index) {

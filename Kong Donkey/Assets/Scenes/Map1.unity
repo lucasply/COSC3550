@@ -456,7 +456,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2078274217, guid: 083f5673b07ac464faa4ca33a4c588dc, type: 3}
+  m_Sprite: {fileID: 1377175971, guid: 083f5673b07ac464faa4ca33a4c588dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -517,6 +517,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kState: 0
   barrelPrefab: {fileID: 3424157168127605141, guid: af29edaaeb201684abc542576e73273d, type: 3}
+  canThrow: 1
+  minThrowTime: 4
   kongSounds: []
 --- !u!4 &147588847 stripped
 Transform:
@@ -5867,7 +5869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1787361605528776966, guid: af29edaaeb201684abc542576e73273d, type: 3}
       propertyPath: fallChance
-      value: 0.99
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 773275396083920369, guid: af29edaaeb201684abc542576e73273d, type: 3}
       propertyPath: m_LocalPosition.x
