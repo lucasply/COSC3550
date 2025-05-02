@@ -10,6 +10,7 @@ public class Barrel : MonoBehaviour
     
     private bool isFalling = false; // Flag to check if the barrel is falling
 
+    private bool moveRight = true;
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -28,13 +29,17 @@ public class Barrel : MonoBehaviour
         }
         else
         {
-            Debug.Log("Rigidbody2D assigned to barrel: " + gameObject.name);
+            //Debug.Log("Rigidbody2D assigned to barrel: " + gameObject.name);
         }
 
     }
 
     void Update()
     {
+        if (rb.velocity.x > 0)
+            moveRight = true;
+        else if (rb.velocity.x < 0)
+            moveRight = false;
         // Check if the barrel is falling and apply falling speed
         if (isFalling)
         {
@@ -57,11 +62,18 @@ public class Barrel : MonoBehaviour
         }
         else if(other.CompareTag("LadderBottomTrigger")){
             //Debug.Log("Barrel has reached the bottom!");
+            if (isFalling)
+            {
+                if(!moveRight)
+                    rb.velocity = new Vector2(1, -fallSpeed);
+                else
+                    rb.velocity = new Vector2(-1, -fallSpeed);
+            }
             isFalling = false;
             gameObject.layer = LayerMask.NameToLayer("Objects"); // Reset the layer to default when it reaches the bottom
             anim.Play(stateName: "BarrelRoll");
             rb.constraints = RigidbodyConstraints2D.None;
-
+            //Give the barrel a push after it lands
 
         }
         else if(other.CompareTag("Fire"))
