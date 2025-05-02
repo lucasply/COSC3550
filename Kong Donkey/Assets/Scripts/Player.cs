@@ -10,10 +10,17 @@ public class Player : MonoBehaviour
     [Header("Inscribed")]
     public float speed = 2;
 
+    // Sound effect variables
+    public List<AudioClip> playerSounds = new List<AudioClip>();
+    private AudioSource source;
+    public float idleSoundChance = 0.05f;
+    public Iggy iggy;
+
     [Header("Dynamic")]
     public int dirHeld = -1;
 
     public PlayerState state = PlayerState.Idle;
+    private bool isPlaying = false;
 
     private Rigidbody2D rigid;
     private Animator anim; 
@@ -34,6 +41,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sRend = GetComponent<SpriteRenderer>();
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -78,15 +86,26 @@ public class Player : MonoBehaviour
         {
             case PlayerState.Run:
                 anim.Play(stateName: "PlayerRun");
+                playPlayerSound(0);
+
                 break;
             case PlayerState.Idle:
                 anim.Play(stateName: "PlayerIdle");
+                if (Random.value < idleSoundChance)
+                {
+                    playPlayerSound(1);
+                }
+
                 break;
             case PlayerState.Jump:
                 anim.Play(stateName: "PlayerJump");
+                playPlayerSound(2);
+
                 break;
             case PlayerState.Ladder:
                 anim.Play(stateName: "PlayerClimb");
+                iggy.playIggySound(2);
+
                 break;
         }
         
@@ -105,4 +124,36 @@ public class Player : MonoBehaviour
         //Debug.Log("Player collided with something");
     }
 
+    public void playPlayerSound(int index) {
+        /*
+            0 : run
+            1 : idle
+            2 : jump
+            3 : death
+            4 : respawn
+        */
+
+        AudioClip clip = playerSounds[index];
+
+        // For testing before recording
+        if (clip == null)
+        {
+            Debug.Log("AudioClip not found at index: " + index);
+            return;
+        }
+        else if (isPlaying) {
+            return;
+        }
+
+        isPlaying = true;
+
+        source.PlayOneShot(clip);
+        StartCoroutine(Wait(clip.length));
+
+        isPlaying = false;
+    }
+
+    IEnumerator Wait(float waitTime) {
+        yield return new WaitForSecondsRealtime(waitTime);
+    }
 }
