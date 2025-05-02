@@ -22,6 +22,7 @@ public class Kong : MonoBehaviour
     // Sound effect variables
     public List<AudioClip> kongSounds = new List<AudioClip>();
     private AudioSource source;
+    private bool isPlaying = false;
 
     void Awake()
     {
@@ -77,8 +78,9 @@ public class Kong : MonoBehaviour
 
     public void playKongSound(int index) {
         /*
-            0 : idel
+            0 : idle
             1 : throw
+            2 : reaction to death
         */
 
         AudioClip clip = kongSounds[index];
@@ -86,11 +88,22 @@ public class Kong : MonoBehaviour
         // For testing before recording
         if (clip == null)
         {
-            Debug.LogError("AudioClip not found at index: " + index);
+            Debug.Log("AudioClip not found at index: " + index);
+            return;
+        }
+        else if (isPlaying) {
             return;
         }
 
+        isPlaying = true;
+
         source.PlayOneShot(clip);
+        StartCoroutine(Wait(clip.length));
+
+        isPlaying = false;
     }
 
+    IEnumerator Wait(float waitTime) {
+        yield return new WaitForSecondsRealtime(waitTime);
+    }
 }

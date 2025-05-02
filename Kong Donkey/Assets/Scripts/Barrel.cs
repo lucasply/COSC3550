@@ -62,7 +62,6 @@ public class Barrel : MonoBehaviour
             anim.Play(stateName: "BarrelRoll");
             rb.constraints = RigidbodyConstraints2D.None;
 
-            playBarrelSound(1);
 
         }
         else if(other.CompareTag("Fire"))
@@ -77,7 +76,6 @@ public class Barrel : MonoBehaviour
     public void playBarrelSound(int index) {
         /*
             0 : smashing
-            1 : hitting ground
         */
 
         AudioClip clip = barrelSounds[index];
@@ -85,7 +83,7 @@ public class Barrel : MonoBehaviour
         // For testing before recording
         if (clip == null)
         {
-            Debug.LogError("AudioClip not found at index: " + index);
+            Debug.Log("AudioClip not found at index: " + index);
             return;
         }
         
