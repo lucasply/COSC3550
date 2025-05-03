@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState {Idle, Jump, Run, Dying, Hammer, Ladder}
 
@@ -169,6 +170,20 @@ public class Player : MonoBehaviour
             Debug.Log("Player touched a ladder");
             canClimb = true;
         }
+        // Goal trigger
+        if(other.gameObject.CompareTag("Goal"))
+        {
+            Debug.Log("Player reached the goal!");
+            // Play victory sounds here
+
+            // Play victory animation here
+
+            // Save lifes for score and move to victory screen
+            FindObjectOfType<GameManager>().Victory();
+
+            
+
+        }
     }
     void OnTriggerExit2D(Collider2D other)
     {
@@ -237,4 +252,5 @@ public class Player : MonoBehaviour
             Destroy(barrel);
         }
     }
+
 }
