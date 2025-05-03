@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState {Idle, Jump, Run, Hammer, Ladder}
+public enum PlayerState {Idle, Jump, Run, Dying, Hammer, Ladder}
 
 public class Player : MonoBehaviour
 {
@@ -142,6 +142,13 @@ public class Player : MonoBehaviour
                 rigid.gravityScale = 0;
 
                 break;
+
+            case PlayerState.Dying:
+                anim.Play(stateName: "PlayerDeath");
+                // playPlayerSound(3);
+                rigid.velocity = Vector2.zero;
+                rigid.gravityScale = 0;
+                break;
         }
         
     }
@@ -204,5 +211,30 @@ public class Player : MonoBehaviour
 
     IEnumerator Wait(float waitTime) {
         yield return new WaitForSecondsRealtime(waitTime);
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Barrel"))
+        {
+            Debug.Log("Player collided with a barrel");
+            //playPlayerSound(3);
+            state = PlayerState.Dying;
+            OnDeath();
+        }
+    }
+    private void OnDeath(){
+        Debug.Log("Player died!");
+        this.gameObject.SetActive(false); // Instead of this, use death animation here, and transfer marquio to "invincible" layer
+        destroyBarrel();
+        FindObjectOfType<GameManager>().playerDied();
+    }
+
+    private void destroyBarrel(){
+        GameObject[] barrelArray = GameObject.FindGameObjectsWithTag("Barrel");
+        foreach(GameObject barrel in barrelArray)
+        {
+            Destroy(barrel);
+        }
     }
 }
