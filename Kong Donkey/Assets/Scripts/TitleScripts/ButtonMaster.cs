@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonMaster : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class ButtonMaster : MonoBehaviour
     public GameObject LevelSelector;
     public GameObject ExitMenu;
     
+    /* =========================
+    //  Starting Screen Buttons
+    // ========================= */
+
     // Starting stuff
     public void PlayGame()
     {
@@ -16,6 +21,11 @@ public class ButtonMaster : MonoBehaviour
     public void back()
     {
         LevelSelector.SetActive(false);
+    }
+    
+    public void Map1()
+    {
+        SceneManager.LoadScene("Map1");
     }
 
     // Settings stuff
@@ -41,6 +51,16 @@ public class ButtonMaster : MonoBehaviour
     public void ExitNo()
     {
         ExitMenu.SetActive(false);
+    }
+
+    /* =========================
+    //  Game Over Screen Buttons
+    // ========================= */
+
+    public void PlayAgain()
+    {
+        // Restart the game
+        SceneManager.LoadScene("Map1");
     }
 
 
