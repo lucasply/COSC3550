@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
     [Header("Dynamic")]
     public int dirHeld = -1;
+    public bool canClimb = false;
 
     public PlayerState state = PlayerState.Idle;
     private bool isPlaying = false;
@@ -55,28 +56,57 @@ public class Player : MonoBehaviour
         }
     
         Vector2 vel = Vector2.zero;
-        //If a direction is held: update velocity
-        if(dirHeld > -1)
+        if (state != PlayerState.Ladder)
         {
-            vel = directions[dirHeld];
-            if (state != PlayerState.Jump)
-                state = PlayerState.Run;
-            if (dirHeld == 0)
-                sRend.flipX = false;
-            else if (dirHeld == 1)
-                sRend.flipX = true;
-        }
-        else//No direction is held
+            //If a direction is held: update velocity
+            if(dirHeld > -1)
+            {
+                vel = directions[dirHeld];
+                if (state != PlayerState.Jump)
+                    state = PlayerState.Run;
+                if (dirHeld == 0)
+                    sRend.flipX = false;
+                else if (dirHeld == 1)
+                    sRend.flipX = true;
+            }   
+            else//No direction is held
+            {
+                state = PlayerState.Idle;
+            }
+        }    
+        //Check if the player can move up or down  ladder
+        if(canClimb || state == PlayerState.Ladder)
         {
-            state = PlayerState.Idle;
-        }
+                //Check if the player wants to climb the ladder
+                if(Input.GetKey(KeyCode.UpArrow)||Input.GetKey(KeyCode.W))
+                {
+                    state = PlayerState.Ladder;
+                    vel = Vector2.up;
+                    gameObject.layer = LayerMask.NameToLayer("Ladder");
 
+                }
+                else if (Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.S))
+                {
+                    state = PlayerState.Ladder;
+                    vel = Vector2.down;
+                    gameObject.layer = LayerMask.NameToLayer("Ladder"); 
+                }
+                //If the player tries to move left or right while at the end of a ladder
+                if (dirHeld>-1 && canClimb)
+                {
+                    state = PlayerState.Run;
+                    vel = directions[dirHeld];
+                    gameObject.layer = LayerMask.NameToLayer("Default"); 
+   
+                }
+
+        }
         rigid.velocity = vel * speed;
         if (rigid.velocity.y ==0 && state==PlayerState.Jump)
             state =PlayerState.Idle;
 
         //If the player pressed jump add vertical velocity
-        if (Input.GetKey(KeyCode.Space) && state != PlayerState.Jump)
+        if (Input.GetKey(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
         {
             Jump();
         }
@@ -87,10 +117,13 @@ public class Player : MonoBehaviour
             case PlayerState.Run:
                 anim.Play(stateName: "PlayerRun");
                 //playPlayerSound(0);
+                rigid.gravityScale = 5;
 
                 break;
             case PlayerState.Idle:
                 anim.Play(stateName: "PlayerIdle");
+                rigid.gravityScale = 5;
+
                 if (Random.value < idleSoundChance)
                 {
                     //playPlayerSound(1);
@@ -100,11 +133,13 @@ public class Player : MonoBehaviour
             case PlayerState.Jump:
                 anim.Play(stateName: "PlayerJump");
                 //playPlayerSound(2);
+                rigid.gravityScale = 5;
 
                 break;
             case PlayerState.Ladder:
                 anim.Play(stateName: "PlayerClimb");
-                iggy.playIggySound(2);
+                //iggy.playIggySound(2);
+                rigid.gravityScale = 0;
 
                 break;
         }
@@ -119,9 +154,23 @@ public class Player : MonoBehaviour
         rigid.velocity =vel;
     }
 
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log("Player collided with something");
+        if(other.CompareTag("Ladder"))
+        {
+            Debug.Log("Player touched a ladder");
+            canClimb = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D other)
+    {
+        //Debug.Log("Player collided with something");
+        if(other.CompareTag("Ladder"))
+        {
+            Debug.Log("Player left a ladder");
+            canClimb =false;
+        }
     }
 
     public void playPlayerSound(int index) {

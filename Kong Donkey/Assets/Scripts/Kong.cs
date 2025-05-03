@@ -71,7 +71,7 @@ public class Kong : MonoBehaviour
     }
     void ThrowBarrel()
     {
-        Debug.Log("Kong has thrown a barrel");
+        //Debug.Log("Kong has thrown a barrel");
         anim.Play(stateName: "KongThrow");
         anim.SetTrigger("Throw");
         barrel = Instantiate(barrelPrefab) as GameObject;
