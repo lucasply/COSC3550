@@ -1247,7 +1247,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1932580966}
         m_TargetAssemblyTypeName: ButtonMaster, Assembly-CSharp
-        m_MethodName: ExitYes
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
