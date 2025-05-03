@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         this.lives--;
         RemoveLifeIcon();
 
-        int choice = Random.Range(0, 3);
+       /* int choice = Random.Range(0, 3);
         if (choice == 0) {
             player.playPlayerSound(3);
         } else if (choice == 1) {
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         } else if (choice == 2) {
             iggy.playIggySound(1);
         }
-
+        */
         if(lives <= 0){
             Debug.Log("Game Over!");
             // Implement game over logic here
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer(){
         // Implement respawn logic here
         Debug.Log("Player respawned!");
-        player.playPlayerSound(4);
+        //player.playPlayerSound(4);
         this.player.gameObject.SetActive(true); // Make sure in player logic, to disable the player when it dies
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);
 
