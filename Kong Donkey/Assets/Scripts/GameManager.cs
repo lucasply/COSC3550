@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
         */
         if(lives <= 0){
             Debug.Log("Game Over!");
+            // Add some delay before loading the end screen to allow for death animation
+            SceneManager.LoadScene("End_Screen");
             // Implement game over logic here
         }
         else{
@@ -76,7 +79,7 @@ public class GameManager : MonoBehaviour
         // Implement respawn logic here
         Debug.Log("Player respawned!");
         //player.playPlayerSound(4);
-        this.player.gameObject.SetActive(true); // Make sure in player logic, to disable the player when it dies
+        this.player.gameObject.SetActive(true); // Set player back to orignal layer here when death animation is done
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);
 
     }
