@@ -83,4 +83,20 @@ public class GameManager : MonoBehaviour
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);
 
     }
+
+    public void Victory(){
+        Debug.Log("You win!");
+        int savedLives = PlayerPrefs.GetInt("PlayerLives", 0);
+        
+        // Save number of lives player completed the game with
+        if(savedLives < lives){
+            Debug.Log($"Saved Lives: {savedLives}, Current Lives: {lives}");
+            PlayerPrefs.SetInt("PlayerLives", lives);
+            PlayerPrefs.Save();
+        }
+        
+        // Add some delay before loading the end screen to allow for victory animation
+        SceneManager.LoadScene("Victory_Screen");
+        
+    }
 }

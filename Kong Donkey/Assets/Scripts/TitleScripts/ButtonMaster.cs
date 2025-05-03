@@ -63,5 +63,13 @@ public class ButtonMaster : MonoBehaviour
         SceneManager.LoadScene("Map1");
     }
 
+    /* =========================
+    //  Victory Screen Buttons
+    // ========================= */
 
+    public void MainMenu()
+    {
+        // Load the main menu scene
+        SceneManager.LoadScene("_TitleScreen");
+    }
 }
