@@ -43,7 +43,8 @@ public class Kong : MonoBehaviour
         {
             case KongState.Idle:
                 anim.Play(stateName: "KongIdle");
-                //playKongSound(0);
+                Debug.Log("Kong is idle");
+                playKongSound(0);
                 if (canThrow)
                 {
                     canThrow = false;
@@ -55,7 +56,8 @@ public class Kong : MonoBehaviour
                 
                 case KongState.BarrelThrow:
                 anim.Play(stateName: "KongThrow");
-                //playKongSound(1);
+                Debug.Log("Kong is throwing");
+                playKongSound(1);
 
                 break;
             
@@ -92,25 +94,21 @@ public class Kong : MonoBehaviour
 
         AudioClip clip = kongSounds[index];
 
+        if (index == 2) {
+            source.PlayOneShot(clip);
+            return;
+        }
+
         // For testing before recording
         if (clip == null)
         {
             Debug.Log("AudioClip not found at index: " + index);
             return;
         }
-        else if (isPlaying) {
+        else if (source.isPlaying) {
             return;
         }
 
-        isPlaying = true;
-
         source.PlayOneShot(clip);
-        StartCoroutine(Wait(clip.length));
-
-        isPlaying = false;
-    }
-
-    IEnumerator Wait(float waitTime) {
-        yield return new WaitForSecondsRealtime(waitTime);
     }
 }

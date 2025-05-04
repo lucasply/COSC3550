@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
 {
     [Header("Game Settings")]
     public Player player; // Place player object here in the inspector
-    public Kong kong;
-    public Iggy iggy;
     public int lives = 3;
     public int score = 0;
     public float respawnTime = 3f;
@@ -53,15 +51,15 @@ public class GameManager : MonoBehaviour
         this.lives--;
         RemoveLifeIcon();
 
-       /* int choice = Random.Range(0, 3);
+        int choice = Random.Range(0, 3);
         if (choice == 0) {
-            player.playPlayerSound(3);
+            FindObjectOfType<Player>().playPlayerSound(2);
         } else if (choice == 1) {
-            kong.playKongSound(2);
+            FindObjectOfType<Kong>().playKongSound(2);
         } else if (choice == 2) {
-            iggy.playIggySound(1);
+            FindObjectOfType<Iggy>().playIggySound(1);
         }
-        */
+        
         if(lives <= 0){
             Debug.Log("Game Over!");
             // Add some delay before loading the end screen to allow for death animation
@@ -78,7 +76,7 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer(){
         // Implement respawn logic here
         Debug.Log("Player respawned!");
-        //player.playPlayerSound(4);
+        FindObjectOfType<Player>().playPlayerSound(3);
         this.player.gameObject.layer  = LayerMask.NameToLayer("Default");
         this.player.state = PlayerState.Idle;
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);

@@ -14,8 +14,7 @@ public class Player : MonoBehaviour
     // Sound effect variables
     public List<AudioClip> playerSounds = new List<AudioClip>();
     private AudioSource source;
-    public float idleSoundChance = 0.05f;
-    public Iggy iggy;
+    public float warningChance = 0.05f;
 
     [Header("Dynamic")]
     public int dirHeld = -1;
@@ -37,6 +36,9 @@ public class Player : MonoBehaviour
         KeyCode.RightArrow, KeyCode.LeftArrow, 
         KeyCode.D, KeyCode.A
     };
+
+    private bool canPlay = true;
+    
 
     void Awake()
     {
@@ -121,36 +123,30 @@ public class Player : MonoBehaviour
             {
                 case PlayerState.Run:
                     anim.Play(stateName: "PlayerRun");
-                    //playPlayerSound(0);
                     rigid.gravityScale = 5;
 
                     break;
                 case PlayerState.Idle:
                     anim.Play(stateName: "PlayerIdle");
                     rigid.gravityScale = 5;
-
-                    if (Random.value < idleSoundChance)
-                    {
-                        //playPlayerSound(1);
-                    }
+                    playPlayerSound(0);
 
                     break;
                 case PlayerState.Jump:
                     anim.Play(stateName: "PlayerJump");
-                    //playPlayerSound(2);
+                    playPlayerSound(1);
                     rigid.gravityScale = 5;
 
                     break;
                 case PlayerState.Ladder:
                     anim.Play(stateName: "PlayerClimb");
-                    //iggy.playIggySound(2);
+                    playPlayerSound(4);
                     rigid.gravityScale = 0;
 
                     break;
 
                 case PlayerState.Dying:
                     anim.Play(stateName: "PlayerDeath");
-                    // playPlayerSound(3);
                     rigid.velocity = Vector2.zero;
                     rigid.gravityScale = 0;
                     break;
@@ -159,7 +155,6 @@ public class Player : MonoBehaviour
         else//Player is in dying state
         {
             anim.Play(stateName: "PlayerDied");
-                    // playPlayerSound(3);
                     rigid.velocity = Vector2.zero;
                     rigid.gravityScale = 0;
         }
@@ -239,14 +234,19 @@ public class Player : MonoBehaviour
 
     public void playPlayerSound(int index) {
         /*
-            0 : run
-            1 : idle
-            2 : jump
-            3 : death
-            4 : respawn
+            0 : idle
+            1 : jump
+            2 : death
+            3 : respawn
+            4 : iggy warning    // moved it here because weird errors
         */
 
         AudioClip clip = playerSounds[index];
+
+        if (index == 2) {
+            source.PlayOneShot(clip);
+            return;
+        }
 
         // For testing before recording
         if (clip == null)
@@ -254,20 +254,21 @@ public class Player : MonoBehaviour
             Debug.Log("AudioClip not found at index: " + index);
             return;
         }
-        else if (isPlaying) {
+        else if (!canPlay) {
+            return;
+        }
+        else if (source.isPlaying) {
+            StartCoroutine(Wait());
             return;
         }
 
-        isPlaying = true;
-
         source.PlayOneShot(clip);
-        StartCoroutine(Wait(clip.length));
-
-        isPlaying = false;
     }
 
-    IEnumerator Wait(float waitTime) {
-        yield return new WaitForSecondsRealtime(waitTime);
+    IEnumerator Wait() {
+        canPlay = false;
+        yield return new WaitForSecondsRealtime(3);
+        canPlay = true;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -275,7 +276,6 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("Barrel"))
         {
             Debug.Log("Player collided with a barrel");
-            //playPlayerSound(3);
             state = PlayerState.Dying;
             OnDeath();
         }
