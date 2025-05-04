@@ -79,7 +79,8 @@ public class GameManager : MonoBehaviour
         // Implement respawn logic here
         Debug.Log("Player respawned!");
         //player.playPlayerSound(4);
-        this.player.gameObject.SetActive(true); // Set player back to orignal layer here when death animation is done
+        this.player.gameObject.layer  = LayerMask.NameToLayer("Default");
+        this.player.state = PlayerState.Idle;
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);
 
     }

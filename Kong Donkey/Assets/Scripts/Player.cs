@@ -44,114 +44,125 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
         sRend = GetComponent<SpriteRenderer>();
         source = GetComponent<AudioSource>();
+        state = PlayerState.Idle;
+
     }
 
     void Update()
     {
-        dirHeld = -1;
-        //Check wich direction is currently being held
-        for (int i= 0;i<keys.Length; i++)
+        if (state != PlayerState.Dying)
         {
-            if (Input.GetKey(keys[i]))
-                dirHeld = i % 2;
-        }
-    
-        Vector2 vel = Vector2.zero;
-        if (state != PlayerState.Ladder)
-        {
-            //If a direction is held: update velocity
-            if(dirHeld > -1)
+            dirHeld = -1;
+            //Check wich direction is currently being held
+            for (int i= 0;i<keys.Length; i++)
             {
-                vel = directions[dirHeld];
-                if (state != PlayerState.Jump)
-                    state = PlayerState.Run;
-                if (dirHeld == 0)
-                    sRend.flipX = false;
-                else if (dirHeld == 1)
-                    sRend.flipX = true;
-            }   
-            else//No direction is held
-            {
-                state = PlayerState.Idle;
+                if (Input.GetKey(keys[i]))
+                    dirHeld = i % 2;
             }
-        }    
-        //Check if the player can move up or down  ladder
-        if(canClimb || state == PlayerState.Ladder)
-        {
-                //Check if the player wants to climb the ladder
-                if(Input.GetKey(KeyCode.UpArrow)||Input.GetKey(KeyCode.W))
-                {
-                    state = PlayerState.Ladder;
-                    vel = Vector2.up;
-                    gameObject.layer = LayerMask.NameToLayer("Ladder");
-
-                }
-                else if (Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.S))
-                {
-                    state = PlayerState.Ladder;
-                    vel = Vector2.down;
-                    gameObject.layer = LayerMask.NameToLayer("Ladder"); 
-                }
-                //If the player tries to move left or right while at the end of a ladder
-                if (dirHeld>-1 && canClimb)
-                {
-                    state = PlayerState.Run;
-                    vel = directions[dirHeld];
-                    gameObject.layer = LayerMask.NameToLayer("Default"); 
-   
-                }
-
-        }
-        rigid.velocity = vel * speed;
-        if (rigid.velocity.y ==0 && state==PlayerState.Jump)
-            state =PlayerState.Idle;
-
-        //If the player pressed jump add vertical velocity
-        if (Input.GetKey(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
-        {
-            Jump();
-        }
-
-        //Decide which animation to play
-        switch (state)
-        {
-            case PlayerState.Run:
-                anim.Play(stateName: "PlayerRun");
-                //playPlayerSound(0);
-                rigid.gravityScale = 5;
-
-                break;
-            case PlayerState.Idle:
-                anim.Play(stateName: "PlayerIdle");
-                rigid.gravityScale = 5;
-
-                if (Random.value < idleSoundChance)
-                {
-                    //playPlayerSound(1);
-                }
-
-                break;
-            case PlayerState.Jump:
-                anim.Play(stateName: "PlayerJump");
-                //playPlayerSound(2);
-                rigid.gravityScale = 5;
-
-                break;
-            case PlayerState.Ladder:
-                anim.Play(stateName: "PlayerClimb");
-                //iggy.playIggySound(2);
-                rigid.gravityScale = 0;
-
-                break;
-
-            case PlayerState.Dying:
-                anim.Play(stateName: "PlayerDeath");
-                // playPlayerSound(3);
-                rigid.velocity = Vector2.zero;
-                rigid.gravityScale = 0;
-                break;
-        }
         
+            Vector2 vel = Vector2.zero;
+            if (state != PlayerState.Ladder)
+            {
+                //If a direction is held: update velocity
+                if(dirHeld > -1)
+                {
+                    vel = directions[dirHeld];
+                    if (state != PlayerState.Jump)
+                        state = PlayerState.Run;
+                    if (dirHeld == 0)
+                        sRend.flipX = false;
+                    else if (dirHeld == 1)
+                        sRend.flipX = true;
+                }   
+                else//No direction is held
+                {
+                    state = PlayerState.Idle;
+                }
+            }    
+            //Check if the player can move up or down  ladder
+            if(canClimb || state == PlayerState.Ladder)
+            {
+                    //Check if the player wants to climb the ladder
+                    if(Input.GetKey(KeyCode.UpArrow)||Input.GetKey(KeyCode.W))
+                    {
+                        state = PlayerState.Ladder;
+                        vel = Vector2.up;
+                        gameObject.layer = LayerMask.NameToLayer("Ladder");
+
+                    }
+                    else if (Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.S))
+                    {
+                        state = PlayerState.Ladder;
+                        vel = Vector2.down;
+                        gameObject.layer = LayerMask.NameToLayer("Ladder"); 
+                    }
+                    //If the player tries to move left or right while at the end of a ladder
+                    if (dirHeld>-1 && canClimb)
+                    {
+                        state = PlayerState.Run;
+                        vel = directions[dirHeld];
+                        gameObject.layer = LayerMask.NameToLayer("Default"); 
+    
+                    }
+
+            }
+            rigid.velocity = vel * speed;
+            if (rigid.velocity.y ==0 && state==PlayerState.Jump)
+                state =PlayerState.Idle;
+
+            //If the player pressed jump add vertical velocity
+            if (Input.GetKey(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
+            {
+                Jump();
+            }
+
+            //Decide which animation to play
+            switch (state)
+            {
+                case PlayerState.Run:
+                    anim.Play(stateName: "PlayerRun");
+                    //playPlayerSound(0);
+                    rigid.gravityScale = 5;
+
+                    break;
+                case PlayerState.Idle:
+                    anim.Play(stateName: "PlayerIdle");
+                    rigid.gravityScale = 5;
+
+                    if (Random.value < idleSoundChance)
+                    {
+                        //playPlayerSound(1);
+                    }
+
+                    break;
+                case PlayerState.Jump:
+                    anim.Play(stateName: "PlayerJump");
+                    //playPlayerSound(2);
+                    rigid.gravityScale = 5;
+
+                    break;
+                case PlayerState.Ladder:
+                    anim.Play(stateName: "PlayerClimb");
+                    //iggy.playIggySound(2);
+                    rigid.gravityScale = 0;
+
+                    break;
+
+                case PlayerState.Dying:
+                    anim.Play(stateName: "PlayerDeath");
+                    // playPlayerSound(3);
+                    rigid.velocity = Vector2.zero;
+                    rigid.gravityScale = 0;
+                    break;
+            }
+        }
+        else//Player is in dying state
+        {
+            anim.Play(stateName: "PlayerDied");
+                    // playPlayerSound(3);
+                    rigid.velocity = Vector2.zero;
+                    rigid.gravityScale = 0;
+        }
     }
 
     void Jump()
@@ -240,8 +251,8 @@ public class Player : MonoBehaviour
     }
     private void OnDeath(){
         Debug.Log("Player died!");
-        this.gameObject.SetActive(false); // Instead of this, use death animation here, and transfer marquio to "invincible" layer
-        destroyBarrel();
+        gameObject.layer = LayerMask.NameToLayer("Invinsible"); 
+        anim.Play(stateName: "PlayerDied");        destroyBarrel();
         FindObjectOfType<GameManager>().playerDied();
     }
 
