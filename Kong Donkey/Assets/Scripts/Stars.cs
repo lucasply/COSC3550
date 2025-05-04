@@ -34,7 +34,7 @@ public class Stars : MonoBehaviour
                 var starIcon = Instantiate(starPrefab, Vector3.zero, Quaternion.identity, transform);
                 starIcon.transform.localScale = new Vector3(100f, 100f, 100f);
                 RectTransform rectTransform = starIcon.GetComponent<RectTransform>();
-                rectTransform.anchoredPosition = new Vector2((i*45-45), (rectTransform.anchoredPosition.y+400));
+                rectTransform.anchoredPosition = new Vector2((i*45-45), (rectTransform.anchoredPosition.y+150));
                 starIcons.Add(starIcon);
             }
         }
