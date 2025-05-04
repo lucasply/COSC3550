@@ -188,14 +188,45 @@ public class Player : MonoBehaviour
             // Play victory sounds here
 
             // Play victory animation here
+            GameObject iggy = GameObject.Find("Iggy"); // Ensure the GameObject is named "Iggy" in the scene
+            if (iggy != null)
+            {
+                Animator iggyAnimator = iggy.GetComponent<Animator>();
+                if (iggyAnimator != null)
+                {
+                    iggyAnimator.Play("IggySaved");
+                }
+                else
+                {
+                    Debug.LogWarning("Iggy does not have an Animator component.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Iggy GameObject not found in the scene.");
+            }
 
+            //freeze player for Iggy victory animation
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                rb.gravityScale = 0f;
+                rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
+
+            // Set position and scale explicitly
+            transform.position = new Vector3(-0.23f, 4.18f, 0f);
+            transform.localScale = new Vector3(3f, 3f, 1f);
             // Save lifes for score and move to victory screen
-            FindObjectOfType<GameManager>().Victory();
-
-            
-
+            Invoke("CallForVictory", 4.0f);
         }
     }
+
+    private void CallForVictory(){
+        FindObjectOfType<GameManager>().Victory();
+    }
+
     void OnTriggerExit2D(Collider2D other)
     {
         //Debug.Log("Player collided with something");
