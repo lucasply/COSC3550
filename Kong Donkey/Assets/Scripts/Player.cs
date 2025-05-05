@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
 
             rigid.velocity = vel;
 
-            if (rigid.velocity.y ==0 && state==PlayerState.Jump)
+            if ((rigid.velocity.y >=0 && rigid.velocity.y<=0.5)&& state==PlayerState.Jump)
                 state =PlayerState.Idle;
 
             //If the player pressed jump add vertical velocity
@@ -129,19 +129,19 @@ public class Player : MonoBehaviour
             {
                 case PlayerState.Run:
                     anim.Play(stateName: "PlayerRun");
-                    rigid.gravityScale = 5;
+                    rigid.gravityScale = 1;
 
                     break;
                 case PlayerState.Idle:
                     anim.Play(stateName: "PlayerIdle");
-                    rigid.gravityScale = 5;
+                    rigid.gravityScale = 1;
                     playPlayerSound(0);
 
                     break;
                 case PlayerState.Jump:
                     anim.Play(stateName: "PlayerJump");
                     playPlayerSound(1);
-                    rigid.gravityScale = 5;
+                    rigid.gravityScale = 1;
 
                     break;
                 case PlayerState.Ladder:

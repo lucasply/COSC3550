@@ -2631,6 +2631,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c75be0b2ab90614580810fae6bdaed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sFXVolume: 1
+  musVolume: 1
+  mute: 0
+  masterVol: 1
+  musVolSet: 1
+  sFXVolSet: 1
   player: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
   lives: 3
   score: 0
@@ -9538,6 +9544,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: jumpHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3090437503122860893, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6261909355483049712, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: m_Name
       value: Player
