@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [Header("Dynamic")]
     public int dirHeld = -1;
     public bool canClimb = false;
-    public int jumpHeight = 14;
+    public int jumpHeight = 4;
     public PlayerState state = PlayerState.Idle;
     private bool isPlaying = false;
 
@@ -169,12 +169,31 @@ public class Player : MonoBehaviour
         // source.volume = GameManager.Instance.sFXVolume;
     }
 
+    void FixedUpdate()
+    {
+        if (rigid.velocity.y > 0)
+        {
+            // Going up – apply lower gravity
+            rigid.gravityScale = 1f;
+        }
+        else if (rigid.velocity.y < 0)
+        {
+            // Falling – apply higher gravity scale for a slower fall
+            rigid.gravityScale = 0.5f; // Lower = slower fall
+        }
+        else
+        {
+            rigid.gravityScale = 1f;
+        }
+    }
+
+
     void Jump()
     {
-        state= PlayerState.Jump;
+        state = PlayerState.Jump;
         Vector2 vel = rigid.velocity;
-        vel.y +=jumpHeight;
-        rigid.velocity =vel;
+        vel.y += jumpHeight;
+        rigid.velocity = vel;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -272,6 +291,9 @@ public class Player : MonoBehaviour
             return;
         }
         else if (muteOnEnd) {
+            return;
+        }
+        else if (index == 4 && Random.value > warningChance) {
             return;
         }
 

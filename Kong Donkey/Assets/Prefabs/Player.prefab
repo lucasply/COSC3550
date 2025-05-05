@@ -202,8 +202,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 78e728af1bafca547886740a1252b8b5, type: 3}
   - {fileID: 8300000, guid: 3284eb12c4550334181e25e19dfc4873, type: 3}
   warningChance: 0.05
+  muteOnEnd: 0
   dirHeld: -1
   canClimb: 0
+  jumpHeight: 4
   state: 0
 --- !u!82 &8921622367539089301
 AudioSource:
