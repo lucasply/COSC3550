@@ -177,13 +177,13 @@ public class Player : MonoBehaviour
         //Debug.Log("Player collided with something");
         if(other.CompareTag("Ladder"))
         {
-            Debug.Log("Player touched a ladder");
+            //Debug.Log("Player touched a ladder");
             canClimb = true;
         }
         // Goal trigger
         if(other.gameObject.CompareTag("Goal"))
         {
-            Debug.Log("Player reached the goal!");
+            //Debug.Log("Player reached the goal!");
             // Play victory sounds here
             muteSources();
 
@@ -232,7 +232,7 @@ public class Player : MonoBehaviour
         //Debug.Log("Player collided with something");
         if(other.CompareTag("Ladder"))
         {
-            Debug.Log("Player left a ladder");
+            //Debug.Log("Player left a ladder");
             canClimb =false;
         }
     }
@@ -304,7 +304,7 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Barrel"))
         {
-            Debug.Log("Player collided with a barrel");
+            //Debug.Log("Player collided with a barrel");
             state = PlayerState.Dying;
             OnDeath();
         }
