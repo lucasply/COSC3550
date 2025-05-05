@@ -5,7 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /*
+    public static GameManager Instance { get; private set; }
+    public float sFXVolume = 1f;
+    public float musVolume = 1f;
+
     [Header("Game Settings")]
+    public bool mute;
+    public float masterVol = 1f;
+    public float musVolSet = 1f;
+    public float sFXVolSet = 1f;
+    */
+
     public Player player; // Place player object here in the inspector
     public int lives = 3;
     public int score = 0;
@@ -13,6 +24,21 @@ public class GameManager : MonoBehaviour
 
     public GameObject lifeRemainingPrefab;
     private List<GameObject> lifeIcons = new List<GameObject>();
+
+    /*
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    */
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +49,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (mute) {
+            masterVol = 0f;
+        }
+
+        sFXVolume = sFXVolSet * masterVol;
+        musVolume = musVolSet * masterVol;
+        */
     }
 
     private void InitializeLives()
@@ -86,6 +119,8 @@ public class GameManager : MonoBehaviour
     public void Victory(){
         Debug.Log("You win!");
         int savedLives = PlayerPrefs.GetInt("PlayerLives", 0);
+
+        // sFXVolSet = 0f;
         
         // Save number of lives player completed the game with
         if(savedLives < lives){

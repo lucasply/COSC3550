@@ -65,6 +65,9 @@ public class Kong : MonoBehaviour
             
 
         }
+
+        // Update volume
+        // source.volume = GameManager.Instance.sFXVolume;
     }
     void PrepareThrow()
     {

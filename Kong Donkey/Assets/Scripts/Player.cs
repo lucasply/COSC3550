@@ -158,6 +158,9 @@ public class Player : MonoBehaviour
                     rigid.velocity = Vector2.zero;
                     rigid.gravityScale = 0;
         }
+
+        // Update volume
+        // source.volume = GameManager.Instance.sFXVolume;
     }
 
     void Jump()
