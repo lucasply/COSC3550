@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [Header("Dynamic")]
     public int dirHeld = -1;
     public bool canClimb = false;
-
+    public int jumpHeight = 14;
     public PlayerState state = PlayerState.Idle;
     private bool isPlaying = false;
 
@@ -63,58 +63,63 @@ public class Player : MonoBehaviour
                     dirHeld = i % 2;
             }
         
-            Vector2 vel = Vector2.zero;
+           Vector2 vel = rigid.velocity; // Start from current velocity
+            // Horizontal movement
             if (state != PlayerState.Ladder)
             {
-                //If a direction is held: update velocity
-                if(dirHeld > -1)
+                if (dirHeld > -1)
                 {
-                    vel = directions[dirHeld];
+                    vel.x = directions[dirHeld].x * speed;
+
                     if (state != PlayerState.Jump)
                         state = PlayerState.Run;
-                    if (dirHeld == 0)
-                        sRend.flipX = false;
-                    else if (dirHeld == 1)
-                        sRend.flipX = true;
-                }   
-                else//No direction is held
-                {
-                    state = PlayerState.Idle;
+
+                    sRend.flipX = (dirHeld == 1);
                 }
-            }    
-            //Check if the player can move up or down  ladder
-            if(canClimb || state == PlayerState.Ladder)
-            {
-                    //Check if the player wants to climb the ladder
-                    if(Input.GetKey(KeyCode.UpArrow)||Input.GetKey(KeyCode.W))
-                    {
-                        state = PlayerState.Ladder;
-                        vel = Vector2.up;
-                        gameObject.layer = LayerMask.NameToLayer("Ladder");
+                else
+                {
+                    vel.x = 0;
 
-                    }
-                    else if (Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.S))
-                    {
-                        state = PlayerState.Ladder;
-                        vel = Vector2.down;
-                        gameObject.layer = LayerMask.NameToLayer("Ladder"); 
-                    }
-                    //If the player tries to move left or right while at the end of a ladder
-                    if (dirHeld>-1 && canClimb)
-                    {
-                        state = PlayerState.Run;
-                        vel = directions[dirHeld];
-                        gameObject.layer = LayerMask.NameToLayer("Default"); 
-    
-                    }
-
+                    if (state != PlayerState.Jump && state != PlayerState.Ladder)
+                        state = PlayerState.Idle;
+                }
             }
-            rigid.velocity = vel * speed;
+
+            // Ladder movement
+            if (canClimb || state == PlayerState.Ladder)
+            {
+                if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+                {
+                    state = PlayerState.Ladder;
+                    vel.y = speed;
+                    gameObject.layer = LayerMask.NameToLayer("Ladder");
+                }
+                else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+                {
+                    state = PlayerState.Ladder;
+                    vel.y = -speed;
+                    gameObject.layer = LayerMask.NameToLayer("Ladder");
+                }
+                else if (state == PlayerState.Ladder)
+                {
+                    vel.y = 0;
+                }
+
+                if (dirHeld > -1 && canClimb)
+                {
+                    state = PlayerState.Run;
+                    vel.x = directions[dirHeld].x * speed;
+                    gameObject.layer = LayerMask.NameToLayer("Default");
+                }
+            }
+
+            rigid.velocity = vel;
+
             if (rigid.velocity.y ==0 && state==PlayerState.Jump)
                 state =PlayerState.Idle;
 
             //If the player pressed jump add vertical velocity
-            if (Input.GetKey(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
+            if (Input.GetKeyDown(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
             {
                 Jump();
             }
@@ -168,7 +173,7 @@ public class Player : MonoBehaviour
     {
         state= PlayerState.Jump;
         Vector2 vel = rigid.velocity;
-        vel.y +=4;
+        vel.y +=jumpHeight;
         rigid.velocity =vel;
     }
 
