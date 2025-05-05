@@ -3503,7 +3503,7 @@ GameObject:
   - component: {fileID: 824901704}
   - component: {fileID: 824901706}
   - component: {fileID: 824901705}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9468,8 +9468,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: boxSize.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: boxSize.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: jumpHeight
-      value: 4
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: castDistance
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 3090437503122860893, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: m_GravityScale

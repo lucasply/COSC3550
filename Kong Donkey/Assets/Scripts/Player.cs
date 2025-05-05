@@ -20,9 +20,12 @@ public class Player : MonoBehaviour
     [Header("Dynamic")]
     public int dirHeld = -1;
     public bool canClimb = false;
-    public int jumpHeight = 4;
+    public float jumpHeight = 4.5f;
     public PlayerState state = PlayerState.Idle;
     private bool isPlaying = false;
+    public Vector2 boxSize;
+    public float castDistance;
+    public LayerMask groundLayer;
 
     private Rigidbody2D rigid;
     private Animator anim; 
@@ -71,8 +74,9 @@ public class Player : MonoBehaviour
                 {
                     vel.x = directions[dirHeld].x * speed;
 
-                    if (state != PlayerState.Jump)
+                    if (state != PlayerState.Jump){
                         state = PlayerState.Run;
+                    }
 
                     sRend.flipX = (dirHeld == 1);
                 }
@@ -80,8 +84,9 @@ public class Player : MonoBehaviour
                 {
                     vel.x = 0;
 
-                    if (state != PlayerState.Jump && state != PlayerState.Ladder)
+                    if (state != PlayerState.Jump && state != PlayerState.Ladder){
                         state = PlayerState.Idle;
+                    }
                 }
             }
 
@@ -119,7 +124,7 @@ public class Player : MonoBehaviour
                 state =PlayerState.Idle;
 
             //If the player pressed jump add vertical velocity
-            if (Input.GetKeyDown(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder))
+            if (Input.GetKeyDown(KeyCode.Space) && (state != PlayerState.Jump  && state !=PlayerState.Ladder) && isGrounded())
             {
                 Jump();
             }
@@ -176,7 +181,7 @@ public class Player : MonoBehaviour
             // Going up – apply lower gravity
             rigid.gravityScale = 1f;
         }
-        else if (rigid.velocity.y < 0)
+        else if (rigid.velocity.y < -3)
         {
             // Falling – apply higher gravity scale for a slower fall
             rigid.gravityScale = 0.5f; // Lower = slower fall
@@ -349,6 +354,17 @@ public class Player : MonoBehaviour
         {
             Destroy(barrel);
         }
+    }
+
+    public bool isGrounded(){
+        if(Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer)){
+            return true;
+        }
+        return false;
+    }
+
+    private void OnDrawGizmos(){
+        Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
     }
 
 }

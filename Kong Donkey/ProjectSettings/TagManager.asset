@@ -11,6 +11,7 @@ TagManager:
   - LadderTopTrigger
   - LadderBottomTrigger
   - MusicPlayer
+  - Floor
   layers:
   - Default
   - TransparentFX
