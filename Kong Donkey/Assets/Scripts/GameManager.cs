@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         } else if (choice == 2) {
             FindObjectOfType<Iggy>().playIggySound(1);
         }
-        
         if(lives <= 0){
             Debug.Log("Game Over!");
             // Add some delay before loading the end screen to allow for death animation
@@ -76,7 +75,8 @@ public class GameManager : MonoBehaviour
     private void RespawnPlayer(){
         // Implement respawn logic here
         Debug.Log("Player respawned!");
-        FindObjectOfType<Player>().playPlayerSound(3);
+        player = FindObjectOfType<Player>();
+        player.playPlayerSound(3);
         this.player.gameObject.layer  = LayerMask.NameToLayer("Default");
         this.player.state = PlayerState.Idle;
         this.player.transform.position = new Vector3(-4.597f, -4.151f, 0);

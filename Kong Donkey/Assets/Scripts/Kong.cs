@@ -43,7 +43,7 @@ public class Kong : MonoBehaviour
         {
             case KongState.Idle:
                 anim.Play(stateName: "KongIdle");
-                Debug.Log("Kong is idle");
+                //Debug.Log("Kong is idle");
                 playKongSound(0);
                 if (canThrow)
                 {
@@ -56,7 +56,7 @@ public class Kong : MonoBehaviour
                 
                 case KongState.BarrelThrow:
                 anim.Play(stateName: "KongThrow");
-                Debug.Log("Kong is throwing");
+                //Debug.Log("Kong is throwing");
                 playKongSound(1);
 
                 break;
