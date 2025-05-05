@@ -24,6 +24,7 @@ public class Kong : MonoBehaviour
     public List<AudioClip> kongSounds = new List<AudioClip>();
     private AudioSource source;
     private bool isPlaying = false;
+    public bool muteOnEnd = false;
 
     void Awake()
     {
@@ -109,6 +110,9 @@ public class Kong : MonoBehaviour
             return;
         }
         else if (source.isPlaying) {
+            return;
+        }
+        else if (muteOnEnd) {
             return;
         }
 

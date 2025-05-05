@@ -10,6 +10,7 @@ TagManager:
   - Fire
   - LadderTopTrigger
   - LadderBottomTrigger
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

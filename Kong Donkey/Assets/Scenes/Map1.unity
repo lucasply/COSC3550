@@ -655,6 +655,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 646f6a99a09200844afa01a3a13f9d3f, type: 3}
   - {fileID: 8300000, guid: 0bb2d17378aa1004e9334866f2df4e10, type: 3}
   - {fileID: 8300000, guid: badd03ab411ad5540a2148a5837394f4, type: 3}
+  muteOnEnd: 0
 --- !u!82 &113564776
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2630,12 +2631,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c75be0b2ab90614580810fae6bdaed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sFXVolume: 1
-  musVolume: 1
-  mute: 0
-  masterVol: 1
-  musVolSet: 1
-  sFXVolSet: 1
   player: {fileID: 641986288487494796, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
   lives: 3
   score: 0
@@ -6262,7 +6257,7 @@ GameObject:
   - component: {fileID: 1418590071}
   m_Layer: 0
   m_Name: MusicPlayer
-  m_TagString: Untagged
+  m_TagString: MusicPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6921,6 +6916,7 @@ MonoBehaviour:
   iggySounds:
   - {fileID: 8300000, guid: 3b14c1ea2774ffc4aaa319c0c5fbc65b, type: 3}
   - {fileID: 8300000, guid: 853a30d3609e7fa42b4a8b95d55e5adf, type: 3}
+  muteOnEnd: 0
 --- !u!82 &1501411873
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9568,11 +9564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462208074004999271, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.42
+      value: -4.73
       objectReference: {fileID: 0}
     - target: {fileID: 8462208074004999271, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.04
+      value: -3.97
       objectReference: {fileID: 0}
     - target: {fileID: 8462208074004999271, guid: b6b9dc61013970a4591f5f39a76da631, type: 3}
       propertyPath: m_LocalPosition.z

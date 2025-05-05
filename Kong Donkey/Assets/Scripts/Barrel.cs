@@ -17,6 +17,7 @@ public class Barrel : MonoBehaviour
     // Sound effect variables
     public List<AudioClip> barrelSounds = new List<AudioClip>();
     private AudioSource source;
+    public bool muteOnEnd = false;
 
     void Start(){
         source = GetComponent<AudioSource>();
@@ -101,6 +102,10 @@ public class Barrel : MonoBehaviour
             Debug.Log("AudioClip not found at index: " + index);
             return;
         }
+        else if (muteOnEnd) {
+            return;
+        }
+        
         
         source.PlayOneShot(clip);
     }

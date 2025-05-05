@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
+    /*
     private AudioSource source;
 
     void Awake() {
@@ -23,4 +24,5 @@ public class MusicPlayer : MonoBehaviour
         // Update volume
         source.volume = vol;
     }
+    */
 }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public List<AudioClip> playerSounds = new List<AudioClip>();
     private AudioSource source;
     public float warningChance = 0.05f;
+    public bool muteOnEnd = false;
 
     [Header("Dynamic")]
     public int dirHeld = -1;
@@ -184,6 +185,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player reached the goal!");
             // Play victory sounds here
+            muteSources();
 
             // Play victory animation here
             GameObject iggy = GameObject.Find("Iggy"); // Ensure the GameObject is named "Iggy" in the scene
@@ -264,6 +266,9 @@ public class Player : MonoBehaviour
             StartCoroutine(Wait());
             return;
         }
+        else if (muteOnEnd) {
+            return;
+        }
 
         source.PlayOneShot(clip);
     }
@@ -272,6 +277,27 @@ public class Player : MonoBehaviour
         canPlay = false;
         yield return new WaitForSecondsRealtime(3);
         canPlay = true;
+    }
+
+    private void muteSources(){
+        /*
+        FindObjectOfType<Player>().muteOnEnd = true;
+        FindObjectOfType<Kong>().muteOnEnd = true;
+        FindObjectOfType<Iggy>().muteOnEnd = true;
+
+        foreach (var barrel in FindObjectsOfType<Barrel>())
+        {
+            barrel.muteOnEnd = true;
+        }
+        */
+        foreach (var source in FindObjectsOfType<AudioSource>())
+        {
+            if (source.gameObject.CompareTag("MusicPlayer")) {
+                continue;
+            }
+
+            source.mute = true;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other)
