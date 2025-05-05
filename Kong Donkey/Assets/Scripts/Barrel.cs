@@ -45,6 +45,9 @@ public class Barrel : MonoBehaviour
         {
             rb.velocity = new Vector2(0, -fallSpeed);
         }
+
+        // Update volume
+        // source.volume = GameManager.Instance.sFXVolume;
     }
 
     // Collision loggic for barrel

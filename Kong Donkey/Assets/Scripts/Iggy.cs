@@ -16,6 +16,12 @@ public class Iggy : MonoBehaviour
         playIggySound(0);
     }
 
+    void Update()
+    {
+        // Update volume
+        source.volume = GameManager.Instance.sFXVolume;
+    }
+
     public void playIggySound(int index) {
         /*
             0 : help me
