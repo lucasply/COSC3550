@@ -95,7 +95,8 @@ public class GameManager : MonoBehaviour
         if(lives <= 0){
             Debug.Log("Game Over!");
             // Add some delay before loading the end screen to allow for death animation
-            SceneManager.LoadScene("End_Screen");
+            Invoke(nameof(setScene), respawnTime);
+
             // Implement game over logic here
         }
         else{
@@ -103,6 +104,9 @@ public class GameManager : MonoBehaviour
             // Implement respawn logic here
             Invoke(nameof(RespawnPlayer), respawnTime);
         }
+    }
+    private void setScene(){
+        SceneManager.LoadScene("End_Screen");
     }
 
     private void RespawnPlayer(){
@@ -133,4 +137,5 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Victory_Screen");
         
     }
+
 }
