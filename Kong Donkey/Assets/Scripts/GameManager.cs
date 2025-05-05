@@ -123,9 +123,11 @@ public class GameManager : MonoBehaviour
     public void Victory(){
         Debug.Log("You win!");
         int savedLives = PlayerPrefs.GetInt("PlayerLives", 0);
-
+        int victoryLives = PlayerPrefs.GetInt("VictoryLives", 0);
          sFXVolSet = 0f;
         
+        PlayerPrefs.SetInt("VictoryLives", lives);
+        PlayerPrefs.Save();
         // Save number of lives player completed the game with
         if(savedLives < lives){
             Debug.Log($"Saved Lives: {savedLives}, Current Lives: {lives}");

@@ -17,7 +17,8 @@ public class Stars : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Victory_Screen"){
             int lives = PlayerPrefs.GetInt("PlayerLives", defaultValue: 0);
-            for (int i = 0; i < lives; i++)
+            int victoryStars = PlayerPrefs.GetInt("VictoryLives", defaultValue: 0);
+            for (int i = 0; i < victoryStars; i++)
             {
                 Debug.Log("Adding star icon: " + i);
                 var starIcon = Instantiate(starPrefab, Vector3.zero, Quaternion.identity, transform);
