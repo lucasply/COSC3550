@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [Header("Dynamic")]
     public int dirHeld = -1;
     public bool canClimb = false;
-    public int jumpHeight = 14;
+    public int jumpHeight = 4;
     public PlayerState state = PlayerState.Idle;
     private bool isPlaying = false;
 
@@ -291,6 +291,9 @@ public class Player : MonoBehaviour
             return;
         }
         else if (muteOnEnd) {
+            return;
+        }
+        else if (index == 4 && Random.value > warningChance) {
             return;
         }
 
